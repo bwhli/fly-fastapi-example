@@ -1,32 +1,31 @@
-# fly.toml app configuration file generated for fly-fastapi-example on 2023-12-05T14:45:25+09:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
-app = "fly-fastapi-example"
-primary_region = "nrt"
+app = 'fly-fastapi-example'
+primary_region = 'nrt'
 
 [build]
 
 [http_service]
   internal_port = 8080
-  force_https = false
-  auto_stop_machines = false
+  auto_stop_machines = 'off'
   auto_start_machines = false
-  processes = ["app"]
+  processes = ['app']
 
   [[http_service.checks]]
-    interval = "5s"
-    timeout = "5s"
-    grace_period = "10s"
-    method = "GET"
-    path = "/"
+    interval = '5s'
+    timeout = '5s'
+    grace_period = '5s'
+    method = 'GET'
+    path = '/'
+
+[[http_service.machine_checks]]
+  command = ["ping6 -v -c1 -W 660 $FLY_TEST_MACHINE_IP"]
+  kill_signal = "SIGKILL"
+  kill_timeout = "30s"
 
 [[vm]]
-  cpu_kind = "shared"
+  cpu_kind = 'shared'
   cpus = 1
   memory_mb = 1024
 
 [[statics]]
-  guest_path = "/app/fly_fastapi_example/static"
-  url_prefix = "/static"
+  guest_path = '/app/fly_fastapi_example/static'
+  url_prefix = '/static'
