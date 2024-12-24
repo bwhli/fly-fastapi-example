@@ -4,7 +4,7 @@ primary_region = 'nrt'
 [build]
 
 [http_service]
-  internal_port = 8080
+  internal_port = 443
   auto_stop_machines = 'off'
   auto_start_machines = false
   processes = ['app']

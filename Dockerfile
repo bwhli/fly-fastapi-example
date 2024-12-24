@@ -19,4 +19,4 @@ COPY --from=venv /app/venv /app/venv/
 ENV PATH="/app/venv/bin:$PATH"
 COPY ./run.sh /app/run.sh
 COPY ./fly_fastapi_example /app/fly_fastapi_example
-CMD ["uvicorn", "fly_fastapi_example.main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "fly_fastapi_example.main:app", "--host", "0.0.0.0", "--port", "443"]
